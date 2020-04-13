@@ -20,6 +20,13 @@ body {
   border: 1px solid black;
 }
 
+.dice-roll {
+  width: 130px;
+  margin-left: 60px;
+  background-color: burlywood;
+  text-align: center;
+}
+
 .dice-icon {
   margin: 50px 50px;
 }
