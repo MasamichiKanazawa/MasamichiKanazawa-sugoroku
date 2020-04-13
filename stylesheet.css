@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  /* しまぶーさんおすすめフォント */
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+}
+
+.top-wrapper {
+  font-size: 30px;
+  color: blue;
+  margin-left: 30px;
+}
+
+.dice-wrapper h2 {
+  color: black;
+  background-color: rgb(43, 223, 103);
+  width: 180px;
+  padding: 20px 20px;
+  margin-left: 100px;
+  border: 1px solid black;
+}
+
+.dice-icon {
+  margin: 50px 50px;
+}
+
+.board-wrapper {
+  margin-top: 100px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.math {
+  /* 横スクロール用 */
+  display: inline-block;
+  width: 10%;
+
+  /* 見た目調整 */
+  height: 150px;
+  margin: 16px;
+  font-size: 48px;
+  background: rgba(255, 0, 0, 0.4);
+}

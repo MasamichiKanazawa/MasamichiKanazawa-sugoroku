@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>Sugoroku</title>
+  </head>
+  <body>
+    <div class="top-wrapper">
+      <div class="container">
+        <h1>すごろく</h1>
+      </div>
+    </div>
+    <div class="dice-wrapper">
+      <div class="container">
+        <div class="dice-roll">
+          <p id="dicerollBtn" class="diceroll-btn">サイコロを振る</p>
+        </div>
+        <div class="diceroll-count">
+          <p><span id="diceRollCount"></span></p>
+        </div>
+        <div class="dice-icon">
+          <img id="resultImage" src="1.png" width="150px" height="150px" />
+        </div>
+      </div>
+    </div>
+    <div class="board-wrapper">
+      <table>
+        <tr>
+          <td class="math" id="m0">スタート</td>
+          <td class="math" id="m1">1</td>
+          <td class="math" id="m2">2</td>
+          <td class="math" id="m3">3</td>
+          <td class="math" id="m4">4</td>
+          <td class="math" id="m5">5</td>
+          <td class="math" id="m6">6</td>
+          <td class="math" id="m7">7</td>
+          <td class="math" id="m8">8</td>
+          <td class="math" id="m9">9</td>
+          <td class="math" id="m10">10</td>
+          <td class="math" id="m11">11</td>
+          <td class="math" id="m12">12</td>
+          <td class="math" id="m13">13</td>
+          <td class="math" id="m14">14</td>
+          <td class="math" id="m15">15</td>
+          <td class="math" id="m16">16</td>
+          <td class="math" id="m17">17</td>
+          <td class="math" id="m18">18</td>
+          <td class="math" id="m19">19</td>
+          <td class="math" id="m20">ゴール</td>
+        </tr>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
