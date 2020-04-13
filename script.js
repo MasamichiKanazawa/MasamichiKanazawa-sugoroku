@@ -15,7 +15,7 @@ $(function () {
   var moveCount;
 
   //サイコロの結果を取得
-  function diceDisplay() {
+  function diceAction() {
     diceResult = Math.floor(Math.random() * (max + 1 - min)) + min;
     $(`img`).attr(`src`, `${diceResult}.png`);
   }
@@ -26,19 +26,17 @@ $(function () {
   }
 
   // 駒を動かす
-  function move() {
-    
-  }
+  function move() {}
 
   // サイコロを振る
   $("#dicerollBtn").click(function () {
-    diceDisplay(); //サイコロの結果を取得
-    function position();// マスの位置を取得
-    function move();// 駒を動かす
+    diceAction(); //サイコロの結果を取得
+    // function position();// マスの位置を取得
+    // function move();// 駒を動かす
     // diceAnimation();//サイコロの動き
   });
 
- //サイコロの動き
+  //サイコロの動き
   // function diceAnimation() {
   //   var pics_src = new Array(
   //     "1.png",
@@ -62,5 +60,4 @@ $(function () {
   //     setTimeout("slideshow_timer()", 50);
   //   }
   // }
-
 });
