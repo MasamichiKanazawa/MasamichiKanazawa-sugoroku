@@ -1,8 +1,9 @@
 $(function () {
   //現在のマス　サイコロの結果を加算していく
   var mathPosition = 0;
-  //ゴールマス
-  var goalPosition = 100;
+  var mathPositionId = "math" + mathPosition;
+  //ゴールまでのマス
+  var goalPosition = 20;
   //サイコロを振った結果
   var min = 1;
   var max = 6;
@@ -23,15 +24,16 @@ $(function () {
   // マスの位置を取得
   function position() {
     mathPosition = mathPosition + diceResult;
+    document.getElementById(mathPositionId).innerHTML = "";
+    document.getElementById(
+      mathPositionId
+    ).innerHTML = `<i id="nowPosition" i class="fas fa-horse"></i>`;
   }
-
-  // 駒を動かす
-  function move() {}
 
   // サイコロを振る
   $("#dicerollBtn").click(function () {
     diceAction(); //サイコロの結果を取得
-    // function position();// マスの位置を取得
+    position(); // マスの位置を取得
     // function move();// 駒を動かす
     // diceAnimation();//サイコロの動き
   });
