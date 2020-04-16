@@ -24,6 +24,7 @@ $(function () {
   // マスの位置を取得
   function position() {
     mathPosition = mathPosition + diceResult;
+    document.getElementById(math0).innerHTML = "";
     document.getElementById(mathPositionId).innerHTML = "";
     document.getElementById(
       mathPositionId
