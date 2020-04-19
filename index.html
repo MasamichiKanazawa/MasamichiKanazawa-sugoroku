@@ -20,23 +20,21 @@
   <body>
     <div class="top-wrapper">
       <div class="container">
-        <h1>すごろく</h1>
+        <h1>すごろくレース</h1>
       </div>
     </div>
     <div class="dice-wrapper">
-      <div class="container">
-        <div class="dice-roll">
-          <span id="dicerollBtn" class="diceroll-btn">サイコロを振る</span>
-          <p>投目</p>
-          <p>ゴールまであと２０マス</p>
-        </div>
-        <div class="diceroll-count">
-          <p><span id="diceRollCount"></span></p>
-        </div>
-        <div class="dice-icon">
-          <img id="resultImage" src="1.png" width="150px" height="150px" />
-        </div>
+      <!-- <div class="container"> -->
+      <div class="dice-roll">
+        <p id="dicerollBtn" class="diceroll-btn">サイコロを振る</p>
+        <br />
+        <p id="count">0投目</p>
+        <p id="toGoal">ゴールまであと１００マス</p>
       </div>
+      <div class="dice-icon">
+        <img id="resultImage" src="1.png" width="150px" height="150px" />
+      </div>
+      <!-- </div> -->
     </div>
     <div class="board-wrapper">
       <table>
@@ -64,7 +62,7 @@
             4
             <div id="math4"></div>
           </td>
-          <td class="math">
+          <td class="math" id="eventmath">
             5
             <div id="math5"></div>
           </td>
@@ -84,7 +82,7 @@
             9
             <div id="math9"></div>
           </td>
-          <td class="math">
+          <td class="math" id="eventmath">
             10
             <div id="math10"></div>
           </td>
@@ -104,7 +102,7 @@
             14
             <div id="math14"></div>
           </td>
-          <td class="math">
+          <td class="math" id="eventmath">
             15
             <div id="math15"></div>
           </td>
@@ -124,9 +122,329 @@
             19
             <div id="math19"></div>
           </td>
+          <td class="math" id="eventmath">
+            20
+            <div id="math20"></div>
+          </td>
+          <td class="math">
+            21
+            <div id="math21"></div>
+          </td>
+          <td class="math">
+            22
+            <div id="math22"></div>
+          </td>
+          <td class="math">
+            23
+            <div id="math23"></div>
+          </td>
+          <td class="math">
+            24
+            <div id="math24"></div>
+          </td>
+          <td class="math" id="eventmath">
+            25
+            <div id="math25"></div>
+          </td>
+          <td class="math">
+            26
+            <div id="math26"></div>
+          </td>
+          <td class="math">
+            27
+            <div id="math27"></div>
+          </td>
+          <td class="math">
+            28
+            <div id="math28"></div>
+          </td>
+          <td class="math">
+            29
+            <div id="math29"></div>
+          </td>
+          <td class="math" id="eventmath">
+            30
+            <div id="math30"></div>
+          </td>
+          <td class="math">
+            31
+            <div id="math31"></div>
+          </td>
+          <td class="math">
+            32
+            <div id="math32"></div>
+          </td>
+          <td class="math">
+            33
+            <div id="math33"></div>
+          </td>
+          <td class="math">
+            34
+            <div id="math34"></div>
+          </td>
+          <td class="math" id="eventmath">
+            35
+            <div id="math35"></div>
+          </td>
+          <td class="math">
+            36
+            <div id="math36"></div>
+          </td>
+          <td class="math">
+            37
+            <div id="math37"></div>
+          </td>
+          <td class="math">
+            38
+            <div id="math38"></div>
+          </td>
+          <td class="math">
+            39
+            <div id="math39"></div>
+          </td>
+          <td class="math" id="eventmath">
+            40
+            <div id="math40"></div>
+          </td>
+          <td class="math">
+            41
+            <div id="math41"></div>
+          </td>
+          <td class="math">
+            42
+            <div id="math42"></div>
+          </td>
+          <td class="math">
+            43
+            <div id="math43"></div>
+          </td>
+          <td class="math">
+            44
+            <div id="math44"></div>
+          </td>
+          <td class="math" id="eventmath">
+            45
+            <div id="math45"></div>
+          </td>
+          <td class="math">
+            46
+            <div id="math46"></div>
+          </td>
+          <td class="math">
+            47
+            <div id="math47"></div>
+          </td>
+          <td class="math">
+            48
+            <div id="math48"></div>
+          </td>
+          <td class="math">
+            49
+            <div id="math49"></div>
+          </td>
+          <td class="math" id="eventmath">
+            50
+            <div id="math50"></div>
+          </td>
+          <td class="math">
+            51
+            <div id="math51"></div>
+          </td>
+          <td class="math">
+            52
+            <div id="math52"></div>
+          </td>
+          <td class="math">
+            53
+            <div id="math53"></div>
+          </td>
+          <td class="math">
+            54
+            <div id="math54"></div>
+          </td>
+          <td class="math" id="eventmath">
+            55
+            <div id="math55"></div>
+          </td>
+          <td class="math">
+            56
+            <div id="math56"></div>
+          </td>
+          <td class="math">
+            57
+            <div id="math57"></div>
+          </td>
+          <td class="math">
+            58
+            <div id="math58"></div>
+          </td>
+          <td class="math">
+            59
+            <div id="math59"></div>
+          </td>
+          <td class="math" id="eventmath">
+            60
+            <div id="math60"></div>
+          </td>
+          <td class="math">
+            61
+            <div id="math61"></div>
+          </td>
+          <td class="math">
+            62
+            <div id="math62"></div>
+          </td>
+          <td class="math">
+            63
+            <div id="math63"></div>
+          </td>
+          <td class="math">
+            64
+            <div id="math64"></div>
+          </td>
+          <td class="math" id="eventmath">
+            65
+            <div id="math65"></div>
+          </td>
+          <td class="math">
+            66
+            <div id="math66"></div>
+          </td>
+          <td class="math">
+            67
+            <div id="math67"></div>
+          </td>
+          <td class="math">
+            68
+            <div id="math68"></div>
+          </td>
+          <td class="math">
+            69
+            <div id="math69"></div>
+          </td>
+          <td class="math" id="eventmath">
+            70
+            <div id="math70"></div>
+          </td>
+          <td class="math">
+            71
+            <div id="math71"></div>
+          </td>
+          <td class="math">
+            72
+            <div id="math72"></div>
+          </td>
+          <td class="math">
+            73
+            <div id="math73"></div>
+          </td>
+          <td class="math">
+            74
+            <div id="math74"></div>
+          </td>
+          <td class="math" id="eventmath">
+            75
+            <div id="math75"></div>
+          </td>
+          <td class="math">
+            76
+            <div id="math76"></div>
+          </td>
+          <td class="math">
+            77
+            <div id="math77"></div>
+          </td>
+          <td class="math">
+            78
+            <div id="math78"></div>
+          </td>
+          <td class="math">
+            79
+            <div id="math79"></div>
+          </td>
+          <td class="math" id="eventmath">
+            80
+            <div id="math80"></div>
+          </td>
+          <td class="math">
+            81
+            <div id="math81"></div>
+          </td>
+          <td class="math">
+            82
+            <div id="math82"></div>
+          </td>
+          <td class="math">
+            83
+            <div id="math83"></div>
+          </td>
+          <td class="math">
+            84
+            <div id="math84"></div>
+          </td>
+          <td class="math" id="eventmath">
+            85
+            <div id="math85"></div>
+          </td>
+          <td class="math">
+            86
+            <div id="math86"></div>
+          </td>
+          <td class="math">
+            87
+            <div id="math87"></div>
+          </td>
+          <td class="math">
+            88
+            <div id="math88"></div>
+          </td>
+          <td class="math">
+            89
+            <div id="math89"></div>
+          </td>
+          <td class="math" id="eventmath">
+            90
+            <div id="math90"></div>
+          </td>
+          <td class="math">
+            91
+            <div id="math91"></div>
+          </td>
+          <td class="math">
+            92
+            <div id="math92"></div>
+          </td>
+          <td class="math">
+            93
+            <div id="math93"></div>
+          </td>
+          <td class="math">
+            94
+            <div id="math94"></div>
+          </td>
+          <td class="math" id="eventmath">
+            95
+            <div id="math95"></div>
+          </td>
+          <td class="math">
+            96
+            <div id="math96"></div>
+          </td>
+          <td class="math">
+            97
+            <div id="math97"></div>
+          </td>
+          <td class="math">
+            98
+            <div id="math98"></div>
+          </td>
+          <td class="math">
+            99
+            <div id="math99"></div>
+          </td>
           <td class="math">
             ゴール
-            <div id="math20"></div>
+            <div id="math100"></div>
           </td>
         </tr>
       </table>

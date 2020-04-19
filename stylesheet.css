@@ -9,6 +9,11 @@ body {
   font-size: 30px;
   color: blue;
   margin-left: 30px;
+  text-align: center;
+}
+
+.dice-wrapper {
+  height: 250px;
 }
 
 .dice-wrapper h2 {
@@ -20,38 +25,67 @@ body {
   border: 1px solid black;
 }
 
-.diceroll-btn {
-  width: 130px;
-  margin-left: 60px;
-  background-color: burlywood;
+.dice-roll {
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.diceroll p {
-  width: 200px;
-  margin-left: 60px;
+.diceroll-btn {
+  height: 50px;
+  padding-top: 20px;
+  background-color: burlywood;
+  margin: 0 top;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 30px;
+  box-shadow: 0px 5px rgb(87, 71, 51);
+  border-radius: 3px;
+  font-size: 30px;
+}
+
+.diceroll-btn:active {
+  position: relative;
+  top: 5px;
+  box-shadow: none;
+}
+
+p {
   text-align: center;
+  font-size: 25px;
 }
 
 .dice-icon {
-  margin: 50px 50px;
+  width: 40%;
+  float: right;
+  box-sizing: border-box;
+  margin: 50px 0px;
 }
 
 .board-wrapper {
-  margin-top: 100px;
+  margin-top: 50px;
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
 
+.fa-horse {
+  color: brown;
+}
+
 .math {
   /* 横スクロール用 */
   display: inline-block;
-  width: 10%;
+  width: 150px;
 
   /* 見た目調整 */
   height: 150px;
   margin: 16px;
-  font-size: 48px;
-  background: rgba(255, 0, 0, 0.4);
+  font-size: 30px;
+  background: rgba(14, 226, 109, 0.4);
+}
+
+#eventmath {
+  background: rgba(6, 68, 34, 0.4);
 }
