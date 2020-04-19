@@ -21,7 +21,7 @@ $(function () {
     $(`img`).attr(`src`, `${diceResult}.png`);
   }
 
-  // マスの位置を取得
+  // マスの位置を取得1,駒の移動
   function position() {
     mathPosition = mathPosition + diceResult;
     document.getElementById(math0).innerHTML = "";
