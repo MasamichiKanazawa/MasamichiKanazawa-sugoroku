@@ -1,17 +1,15 @@
 $(function () {
-  //現在のマス　サイコロの結果　加算していく
+  //現在のマス　サイコロの結果　減少していく,イベントの結果　増減していく
   var mathPosition = 0;
   var mathPositionId = "math" + mathPosition;
-  //ゴールまでのマス サイコロの結果　減少していく
+  //ゴールまでのマス サイコロの結果　減少していく,イベントの結果　増減していく
   var goalPosition = 100;
   //サイコロを振った結果
   var min = 1;
   var max = 6;
-  //サイコロの画像
-  // var resultImage = "1.png";
-  // //サイコロを振るのが何回目か
+  // //サイコロを振るのが何回目か 加算していく
   var diceRollCount = 1;
-  // コマが移動する数
+  // コマが移動する数（イベント用）
   var moveCount;
 
   //サイコロの結果を取得
@@ -23,7 +21,9 @@ $(function () {
 
   // マスの位置を取得,コマの移動
   function position() {
+    $(`＃dicerollBtn`).text(`${diceRollCount}投目`);
     if (mathPosition < 100) {
+      // マスの位置を取得
       mathPosition = mathPosition + diceResult;
       // alert(mathPosition);
       // コマの移動
@@ -35,14 +35,14 @@ $(function () {
       // 画面を自動スクロール
       let element = document.getElementById("nowPosition");
       element.scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでのマスを取得、表示
+      // ゴールまでの残りマスを取得、表示
       goalPosition = goalPosition - diceResult;
-      // alert(goalPosition);
       $(`＃toGoal`).text(`ゴールまであと${goalPosition}マス`);
+      // alert(goalPosition);
       // サイコロを振った回数を追加、表示
       diceRollCount++;
-      // alert(diceRollCount);
       $(`＃count`).text(`${diceRollCount}投目`);
+      // alert(diceRollCount);
     } else {
       // // ゴール コマを変化させる、コメント表示
       // document.getElementById(mathPositionId).innerHTML = "";
@@ -54,7 +54,7 @@ $(function () {
     }
   }
 
-  // サイコロを振る
+  // サイコロを振る　まとめ
   $("#dicerollBtn").click(function () {
     diceAction(); //サイコロの結果を取得
     position(); // マスの位置を取得、コマの移動
