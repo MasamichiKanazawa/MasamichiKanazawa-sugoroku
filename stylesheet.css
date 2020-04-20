@@ -32,7 +32,7 @@ body {
   text-align: center;
 }
 
-.diceroll-btn {
+#dicerollBtn {
   height: 50px;
   padding-top: 20px;
   background-color: burlywood;
@@ -45,7 +45,7 @@ body {
   font-size: 30px;
 }
 
-.diceroll-btn:active {
+#dicerollBtn:active {
   position: relative;
   top: 5px;
   box-shadow: none;
