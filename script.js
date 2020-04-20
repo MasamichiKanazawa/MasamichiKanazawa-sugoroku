@@ -59,29 +59,77 @@ $(function () {
       $(`＃toGoal`).text(`ゴール！！`);
     }
   }
-  
-  function fowordEvent(){
-    moveCount = Math.floor(Math.random() * (maxMovex + 1 - mminMove)) + minMove;
-    alert(moveCount);
-  };
 
-  function backEvent(){
-    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMoves;
-    alert(moveCount);
-  };
+  // 進むイベント実行
+  function fowordEvent() {
+    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
+    // alert(moveCount);
 
-  // イベントの発生、条件分岐
+    // マスの位置を取得 進む
+    mathPosition = mathPosition + moveCount;
+    // alert(mathPosition);
+
+    // イベントコメント表示
+    $(`＃toGoal`).text(`ゴール！！`);
+
+    // コマの移動
+    document.getElementById(mathPositionId).innerHTML = "";
+    mathPositionId = "math" + mathPosition;
+    document.getElementById(
+      mathPositionId
+    ).innerHTML = `<i id="nowPosition" i class="fas fa-horse"></i>`;
+
+    // 画面を自動スクロール
+    let element = document.getElementById("nowPosition");
+    element.scrollIntoView({ behavior: "smooth", inline: "start" });
+
+    // ゴールまでの残りマスを取得、表示
+    goalPosition = goalPosition - diceResult;
+    $(`＃toGoal`).text(`ゴールまであと${goalPosition}マス`);
+    // alert(goalPosition);
+  }
+
+  // 戻るイベント実行
+  function backEvent() {
+    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
+    // alert(moveCount);
+
+    // マスの位置を取得　戻る
+    mathPosition = mathPosition - moveCount;
+    // alert(mathPosition);
+
+    // イベントコメント表示
+    $(`＃toGoal`).text(`ゴール！！`);
+
+    // コマの移動
+    document.getElementById(mathPositionId).innerHTML = "";
+    mathPositionId = "math" + mathPosition;
+    document.getElementById(
+      mathPositionId
+    ).innerHTML = `<i id="nowPosition" i class="fas fa-horse"></i>`;
+
+    // 画面を自動スクロール
+    let element = document.getElementById("nowPosition");
+    element.scrollIntoView({ behavior: "smooth", inline: "start" });
+
+    // ゴールまでの残りマスを取得、表示
+    goalPosition = goalPosition - diceResult;
+    $(`＃toGoal`).text(`ゴールまであと${goalPosition}マス`);
+    // alert(goalPosition);
+  }
+
+  // イベントの選択
   function selectEvent() {
     if (
       document.getElementById(mathPositionId).classList.contains("event") ==
       true
     ) {
       selectId = Math.floor(Math.random() * 2 + 1);
-      alert(selectId);
+      // alert(selectId);
       if (selectId == 1) {
-        function fowordEvent();
+        fowordEvent();
       } else {
-        function backEvent();
+        backEvent();
       }
     }
   }
