@@ -12,7 +12,7 @@ $(function () {
   // コマが移動する数（イベント用）
   var moveCount;
   var minMove = 1;
-  var maxMove = 10;
+  var maxMove = 4;
 
   //サイコロの結果を取得
   function diceAction() {
@@ -22,8 +22,11 @@ $(function () {
 
     // サイコロを振った回数を追加、表示
     diceRollCount++;
-    $(`＃count`).text(`${diceRollCount}投目`);
-    alert(diceRollCount);
+    $("#count").text(`${diceRollCount}投目`);
+    // alert(diceRollCount);
+
+    // イベント表示リセット
+    $("#eventText").text(``);
   }
 
   // マスの位置を取得,コマの移動
@@ -41,13 +44,15 @@ $(function () {
       ).innerHTML = `<i id="nowPosition" i class="fas fa-horse"></i>`;
 
       // 画面を自動スクロール
-      let element = document.getElementById("nowPosition");
-      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // let element = document.getElementById("nowPosition");
+      document
+        .getElementById("nowPosition")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
 
       // ゴールまでの残りマスを取得、表示
       goalPosition = goalPosition - diceResult;
-      $(`＃toGoal`).text(`ゴールまであと${goalPosition}マス`);
-      alert(goalPosition);
+      $("#toGoal").text(`ゴールまであと${goalPosition}マス`);
+      // alert(goalPosition);
     } else {
       // // ゴール コマを変化させる、コメント表示
       // document.getElementById(mathPositionId).innerHTML = "";
@@ -55,7 +60,7 @@ $(function () {
       // document.getElementById(
       //   mathPositionId
       // ).innerHTML = `<i id="nowPosition" i class="fas fa-chess-knigh"></i>`;
-      $(`＃toGoal`).text(`ゴール！！`);
+      $("#toGoal").text(`ゴール!!`);
     }
   }
 
@@ -64,16 +69,16 @@ $(function () {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
     // alert(moveCount);
 
+    // イベントコメント表示
+    // $("#eventText").text(`イベント発生！${moveCount}マス進む！`);
+
     // マスの位置を取得 進む
     mathPosition = mathPosition + moveCount;
     // alert(mathPosition);
 
-    // イベントコメント表示
-    // $(`＃toGoal`).text(`イベント発生！${moveCountnt}マス進む！`);
-
     // コマの移動
     document.getElementById(mathPositionId).innerHTML = "";
-    mathPositionId = "math" + mathPosition;
+    mathPositionId = "math" - mathPosition;
     document.getElementById(
       mathPositionId
     ).innerHTML = `<i id="nowPosition" i class="fas fa-horse"></i>`;
@@ -82,23 +87,24 @@ $(function () {
     let element = document.getElementById("nowPosition");
     element.scrollIntoView({ behavior: "smooth", inline: "start" });
 
-    // ゴールまでの残りマスを取得、表示
-    goalPosition = goalPosition - diceResult;
-    // $(`＃toGoal`).text(`ゴールまであと${goalPosition}マス`);
+    // ゴールまでの残りマスを取得、表示 減少
+    goalPosition = goalPosition - moveCount;
+    $("#toGoal").text(`ゴールまであと${goalPosition}マス`);
     // alert(goalPosition);
   }
+  setTimeout(fowordEvent, 5000);
 
   // 戻るイベント実行
   function backEvent() {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
     // alert(moveCount);
 
+    // イベントコメント表示
+    // $("#eventText").text(`イベント発生！${moveCount}マス戻る！`);
+
     // マスの位置を取得　戻る
     mathPosition = mathPosition - moveCount;
     // alert(mathPosition);
-
-    // イベントコメント表示
-    // $(`＃toGoal`).text(`イベント発生！${moveCountnt}マス戻る！`);
 
     // コマの移動
     document.getElementById(mathPositionId).innerHTML = "";
@@ -111,11 +117,12 @@ $(function () {
     let element = document.getElementById("nowPosition");
     element.scrollIntoView({ behavior: "smooth", inline: "start" });
 
-    // ゴールまでの残りマスを取得、表示
-    goalPosition = goalPosition - diceResult;
+    // ゴールまでの残りマスを取得、表示　増加
+    goalPosition = goalPosition - mathPosition;
     $(`#toGoal`).text(`ゴールまであと${goalPosition}マス`);
     // alert(goalPosition);
   }
+  setTimeout(backEvent, 5000);
 
   // イベントの選択
   function selectEvent() {
@@ -124,7 +131,7 @@ $(function () {
       true
     ) {
       selectId = Math.floor(Math.random() * 2 + 1);
-      // alert(selectId);
+      alert(selectId);
       if (selectId == 1) {
         fowordEvent();
       } else {
@@ -132,6 +139,7 @@ $(function () {
       }
     }
   }
+  setTimeout(selectEvent, 5000);
 
   // サイコロを振る　まとめ
   $("#dicerollBtn").click(function () {
