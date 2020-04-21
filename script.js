@@ -66,10 +66,6 @@ $(function () {
     $("#eventText").text(`イベント発生！${moveCount}マス進む！`);
     // マスの位置を取得 進む
     mathPosition = mathPosition + moveCount;
-    // イベントの待機時間
-    setTimeout(fowordEventMove, 1000);
-  }
-  function fowordEventMove() {
     // コマの移動
     document.getElementById(mathPositionId).innerHTML = "";
     mathPositionId = "math" + mathPosition;
@@ -91,10 +87,6 @@ $(function () {
     $("#eventText").text(`イベント発生！${moveCount}マス戻る！`);
     // マスの位置を取得　戻る
     mathPosition = mathPosition - moveCount;
-    // イベントの待機時間
-    setTimeout(backEventMove, 1000);
-  }
-  function backEventMove() {
     // コマの移動
     document.getElementById(mathPositionId).innerHTML = "";
     mathPositionId = "math" + mathPosition;
@@ -117,9 +109,9 @@ $(function () {
     ) {
       selectId = Math.floor(Math.random() * 2 + 1);
       if (selectId == 1) {
-        fowordEvent();
+        setTimeout(fowordEvent, 1300);
       } else {
-        backEvent();
+        setTimeout(backEvent, 1300);
       }
     }
   }
