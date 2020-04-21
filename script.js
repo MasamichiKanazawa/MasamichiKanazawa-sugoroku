@@ -91,7 +91,7 @@ $(function () {
     $("#eventText").text(`イベント発生！${moveCount}マス戻る！`);
     // マスの位置を取得　戻る
     mathPosition = mathPosition - moveCount;
-    setTimeout(backEventMove, 3000);
+    setTimeout(backEventMove, 1000);
   }
 
   function backEventMove() {
@@ -107,8 +107,6 @@ $(function () {
     // ゴールまでの残りマスを取得、表示　増加
     goalPosition = goalPosition + moveCount;
     $(`#toGoal`).text(`ゴールまであと${goalPosition}マス`);
-
-    // setTimeout(backEvent, 4000);
   }
 
   // イベントの選択
@@ -123,7 +121,6 @@ $(function () {
       } else {
         backEvent();
       }
-      // setTimeout(selectEvent, 4000);
     }
   }
 
