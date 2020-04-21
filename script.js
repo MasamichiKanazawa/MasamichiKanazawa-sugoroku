@@ -14,7 +14,7 @@ $(function () {
   var minMove = 1;
   var maxMove = 4;
 
-  //サイコロの結果を取得
+  //　①サイコロの結果を取得
   function diceAction() {
     diceResult = Math.floor(Math.random() * (max + 1 - min)) + min;
     $(`img`).attr(`src`, `${diceResult}.png`);
@@ -25,7 +25,7 @@ $(function () {
     $("#eventText").text(``);
   }
 
-  // マスの位置を取得,コマの移動
+  // ②マスの位置を取得,コマの移動
   function position() {
     // マスの位置を取得
     mathPosition = mathPosition + diceResult;
@@ -59,7 +59,7 @@ $(function () {
     }
   }
 
-  // 進むイベント実行
+  // ③-１進むイベント実行
   function fowordEvent() {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
     // イベントコメント表示
@@ -80,7 +80,7 @@ $(function () {
     $("#toGoal").text(`ゴールまであと${goalPosition}マス`);
   }
 
-  // 戻るイベント実行
+  // ③-2戻るイベント実行
   function backEvent() {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
     // イベントコメント表示
@@ -101,7 +101,7 @@ $(function () {
     $(`#toGoal`).text(`ゴールまであと${goalPosition}マス`);
   }
 
-  // イベントの選択
+  // ③イベントの選択
   function selectEvent() {
     if (
       document.getElementById(mathPositionId).classList.contains("event") ==
@@ -109,8 +109,10 @@ $(function () {
     ) {
       selectId = Math.floor(Math.random() * 2 + 1);
       if (selectId == 1) {
+        // ③-１進むイベント実行
         setTimeout(fowordEvent, 1300);
       } else {
+        // ③-２戻るイベント実行
         setTimeout(backEvent, 1300);
       }
     }
@@ -118,9 +120,9 @@ $(function () {
 
   // サイコロを振る　まとめ
   $("#dicerollBtn").click(function () {
-    diceAction(); //サイコロの結果を取得
-    position(); // マスの位置を取得、コマの移動
-    selectEvent(); // イベントの選択
+    diceAction(); //①サイコロの結果を取得
+    position(); // ②マスの位置を取得、コマの移動
+    selectEvent(); //③ イベントの選択
     // diceAnimation();//サイコロの動き
   });
 });
