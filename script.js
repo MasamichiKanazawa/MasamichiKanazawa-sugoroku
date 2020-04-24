@@ -2,7 +2,7 @@ $(function () {
   // プレイヤー
   var player = 1;
   // プレイヤー人数
-  var playerId = 2;
+  // var playerId = 2;
   //現在のマス　サイコロの結果　減少していく,イベントの結果　増減していく
   var mathPosition1 = 0;
   var mathPositionId1 = "math" + mathPosition1;
@@ -42,6 +42,7 @@ $(function () {
     if (mathPosition1 < 100) {
       // コマの移動
       document.getElementById(mathPositionId1).innerHTML = "";
+      // $("i").removeClass("pl1.fas.fa-horse");
       mathPositionId1 = "math" + mathPosition1;
       document.getElementById(
         mathPositionId1
@@ -275,10 +276,15 @@ $(function () {
   // プレイヤー人数の決定
   $("#plb1").click(function () {
     playerId = 1;
+    aleart(playerId);
   });
 
   $("#plb2").click(function () {
     playerId = 2;
+    alert(playerId);
+    document.getElementById(
+      math0
+    ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
   });
 
   // function plb1() {
