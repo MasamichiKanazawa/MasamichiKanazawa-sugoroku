@@ -31,6 +31,11 @@ body {
   text-align: center;
 }
 
+.dice-roll p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 #dicerollBtn {
   height: 50px;
   padding-top: 20px;
@@ -69,8 +74,12 @@ p {
   -webkit-overflow-scrolling: touch;
 }
 
-.fa-horse {
+.pl1 {
   color: brown;
+}
+
+.pl2 {
+  color: rgb(59, 26, 209);
 }
 
 .math {
