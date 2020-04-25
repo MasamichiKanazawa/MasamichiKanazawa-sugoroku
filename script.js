@@ -2,7 +2,7 @@ $(function () {
   // プレイヤー
   var player = 1;
   // プレイヤー人数
-  // var playerId = 2;
+  // var playerId;
   //現在のマス　サイコロの結果　減少していく,イベントの結果　増減していく
   var mathPosition1 = 0;
   var mathPositionId1 = "math" + mathPosition1;
@@ -260,7 +260,6 @@ $(function () {
       diceAction1(); //①サイコロの結果を取得
       position1(); // ②マスの位置を取得、コマの移動
       selectEvent1(); //③イベントの選択
-      // player++; // プレイヤー変更
       if (playerId == 2) {
         playerChange1(); //④プレイヤー変更
       }
@@ -268,7 +267,6 @@ $(function () {
       diceAction2(); //①サイコロの結果を取得
       position2(); // ②マスの位置を取得、コマの移動
       selectEvent2(); //③イベントの選択
-      // player--; // プレイヤー変更
       playerChange2(); //④プレイヤー変更
     }
   });
