@@ -41,12 +41,14 @@ $(function () {
     // alert(mathPosition);
     if (mathPosition1 < 100) {
       // コマの移動
-      document.getElementById(mathPositionId1).innerHTML = "";
-      // $("i").removeClass("pl1.fas.fa-horse");
+      $(".pl1").remove();
       mathPositionId1 = "math" + mathPosition1;
-      document.getElementById(
-        mathPositionId1
-      ).innerHTML = `<i id="nowPosition1" i class="pl1 fas fa-horse"></i>`;
+      document
+        .getElementById(mathPositionId1)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+        );
       // 画面を自動スクロール
       document
         .getElementById("nowPosition1")
@@ -55,13 +57,16 @@ $(function () {
       $("#toGoal").text(`ゴールまであと${goalPosition1}マス`);
     } else {
       //ゴール コマを変化させる、コメント表示
-      document.getElementById(mathPositionId1).innerHTML = "";
+      $(".pl1").remove();
       mathPosition1 = 100;
       mathPositionId1 = "math100";
-      document.getElementById(
-        mathPositionId1
-      ).innerHTML = `<i id="nowPosition1" i class="pl1 fas fa-horse"></i>`;
-      //  `<i id="nowPosition" i class="fas fa-chess-knight"></i>`;
+      document
+        .getElementById(mathPositionId1)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+        );
+      //  `<i id="nowPosition" i class="pl1 fas fa-chess-knight"></i>`;
       // ゴールを表示
       $("#toGoal").text(`プレイヤー1の勝利です!`);
     }
@@ -74,11 +79,14 @@ $(function () {
     // マスの位置を取得 進む
     mathPosition1 = mathPosition1 + moveCount;
     // コマの移動
-    document.getElementById(mathPositionId1).innerHTML = "";
+    $(".pl1").remove();
     mathPositionId1 = "math" + mathPosition1;
-    document.getElementById(
-      mathPositionId1
-    ).innerHTML = `<i id="nowPosition1" i class="pl1 fas fa-horse"></i>`;
+    document
+      .getElementById(mathPositionId1)
+      .insertAdjacentHTML(
+        "afterbegin",
+        '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+      );
     // 画面を自動スクロール
     let element = document.getElementById("nowPosition1");
     element.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -94,11 +102,14 @@ $(function () {
     // マスの位置を取得　戻る
     mathPosition1 = mathPosition1 - moveCount;
     // コマの移動
-    document.getElementById(mathPositionId1).innerHTML = "";
+    $(".pl1").remove();
     mathPositionId1 = "math" + mathPosition1;
-    document.getElementById(
-      mathPositionId1
-    ).innerHTML = `<i id="nowPosition1" i class="pl1 fas fa-horse"></i>`;
+    document
+      .getElementById(mathPositionId1)
+      .insertAdjacentHTML(
+        "afterbegin",
+        '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+      );
     // 画面を自動スクロール
     let element = document.getElementById("nowPosition1");
     element.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -128,7 +139,7 @@ $(function () {
     setTimeout(playerChangeText1, 2000);
   }
   function playerChangeText1() {
-    // プレイヤーコメント
+    // 次プレイヤーコメント
     $("#playNum").text(`プレイヤー${player}の順番です`);
     $("#count").text(`${diceRollCount2}投目`);
     $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
@@ -156,12 +167,14 @@ $(function () {
     // alert(mathPosition);
     if (mathPosition2 < 100) {
       // コマの移動
-      document.getElementById(mathPositionId2).innerHTML = "";
+      $(".pl2").remove();
       mathPositionId2 = "math" + mathPosition2;
-      document.getElementById(
-        mathPositionId2
-      ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
-
+      document
+        .getElementById(mathPositionId2)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+        );
       // 画面を自動スクロール
       document
         .getElementById("nowPosition2")
@@ -170,12 +183,15 @@ $(function () {
       $("#toGoal").text(`ゴールまであと${goalPosition2}マス`);
     } else {
       //ゴール コマを変化させる、コメント表示
-      document.getElementById(mathPositionId2).innerHTML = "";
+      $(".pl2").remove();
       mathPosition2 = 100;
       mathPositionId2 = "math100";
-      document.getElementById(
-        mathPositionId2
-      ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
+      document
+        .getElementById(mathPositionId2)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+        );
       //  `<i id="nowPosition" i class="fas fa-chess-knight"></i>`;
       // ゴールを表示
       $("#toGoal").text(`ゴール!!プレイヤー2の勝利です!!`);
@@ -189,11 +205,14 @@ $(function () {
     // マスの位置を取得 進む
     mathPosition2 = mathPosition2 + moveCount;
     // コマの移動
-    document.getElementById(mathPositionId2).innerHTML = "";
+    $(".pl2").remove();
     mathPositionId2 = "math" + mathPosition2;
-    document.getElementById(
-      mathPositionId2
-    ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
+    document
+      .getElementById(mathPositionId2)
+      .insertAdjacentHTML(
+        "afterbegin",
+        '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+      );
     // 画面を自動スクロール
     let element = document.getElementById("nowPosition2");
     element.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -209,11 +228,14 @@ $(function () {
     // マスの位置を取得　戻る
     mathPosition2 = mathPosition2 - moveCount;
     // コマの移動
-    document.getElementById(mathPositionId2).innerHTML = "";
+    $(".pl2").remove();
     mathPositionId2 = "math" + mathPosition2;
-    document.getElementById(
-      mathPositionId2
-    ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
+    document
+      .getElementById(mathPositionId2)
+      .insertAdjacentHTML(
+        "afterbegin",
+        '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+      );
     // 画面を自動スクロール
     let element = document.getElementById("nowPosition2");
     element.scrollIntoView({ behavior: "smooth", inline: "start" });
@@ -245,8 +267,8 @@ $(function () {
     }
   }
   function playerChangeText2() {
-    // プレイヤーコメント
-    $("#playNum").text(`${player}の順番です`);
+    // 次プレイヤーコメント
+    $("#playNum").text(`プレイヤー${player}の順番です`);
     $("#count").text(`${diceRollCount1}投目`);
     $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
     document
@@ -257,6 +279,7 @@ $(function () {
   // サイコロを振る　まとめ
   $("#dicerollBtn").click(function () {
     if (player == 1) {
+      // プレイヤー１
       diceAction1(); //①サイコロの結果を取得
       position1(); // ②マスの位置を取得、コマの移動
       selectEvent1(); //③イベントの選択
@@ -264,6 +287,7 @@ $(function () {
         playerChange1(); //④プレイヤー変更
       }
     } else {
+      // プレイヤー２
       diceAction2(); //①サイコロの結果を取得
       position2(); // ②マスの位置を取得、コマの移動
       selectEvent2(); //③イベントの選択
@@ -272,18 +296,18 @@ $(function () {
   });
 
   // プレイヤー人数の決定
-  $("#plb1").click(function () {
-    playerId = 1;
-    aleart(playerId);
-  });
+  // $("#plb1").click(function () {
+  //   playerId = 1;
+  //   aleart(playerId);
+  // });
 
-  $("#plb2").click(function () {
-    playerId = 2;
-    alert(playerId);
-    document.getElementById(
-      math0
-    ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
-  });
+  // $("#plb2").click(function () {
+  //   playerId = 2;
+  //   alert(playerId);
+  //   document.getElementById(
+  //     math0
+  //   ).innerHTML = `<i id="nowPosition2" i class="pl2 fas fa-horse"></i>`;
+  // });
 
   // function plb1() {
   //   playerId = 1;

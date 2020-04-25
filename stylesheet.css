@@ -60,6 +60,10 @@ p {
   font-size: 25px;
 }
 
+#eventText {
+  color: rgb(233, 20, 38);
+}
+
 .dice-icon {
   width: 40%;
   float: right;
