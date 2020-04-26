@@ -102,6 +102,10 @@ p {
   background: rgba(6, 68, 34, 0.4);
 }
 
+#changeEventmath {
+  background: rgba(95, 7, 61, 0.4);
+}
+
 .start {
   height: 50px;
   padding-top: 20px;

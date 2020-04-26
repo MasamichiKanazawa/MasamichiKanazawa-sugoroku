@@ -21,6 +21,8 @@ $(function () {
   var moveCount;
   var minMove = 1;
   var maxMove = 4;
+  // プレイヤー位置変更タグ 1か2
+  var changePlayer = 1;
 
   // プレイヤー１
   //　①サイコロの結果を取得
@@ -35,11 +37,91 @@ $(function () {
   }
   // ②マスの位置を取得,コマの移動
   function position1() {
-    // マスの位置を取得
-    mathPosition1 = mathPosition1 + diceResult;
-    goalPosition1 = goalPosition1 - diceResult;
-    // alert(mathPosition);
-    if (mathPosition1 < 100) {
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      // マスの位置を取得
+      mathPosition1 = mathPosition1 + diceResult;
+      goalPosition1 = goalPosition1 - diceResult;
+      // alert(mathPosition);
+      if (mathPosition1 < 100) {
+        // コマの移動
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを表示
+        $("#toGoal").text(`ゴールまであと${goalPosition1}マス`);
+      } else {
+        //ゴール コマを変化させる、コメント表示
+        $(".pl1").remove();
+        mathPosition1 = 100;
+        mathPositionId1 = "math100";
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        //  `<i id="nowPosition" i class="pl1 fas fa-chess-knight"></i>`;
+        // ゴールを表示
+        $("#toGoal").text(`プレイヤー1の勝利です!`);
+      }
+    } else {
+      // プレイヤー位置変更あり
+      // マスの位置を取得
+      mathPosition2 = mathPosition2 + diceResult;
+      goalPosition2 = goalPosition2 - diceResult;
+      // alert(mathPosition);
+      if (mathPosition2 < 100) {
+        // コマの移動
+        $(".pl1").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを表示
+        $("#toGoal").text(`ゴールまであと${goalPosition2}マス`);
+      } else {
+        //ゴール コマを変化させる、コメント表示
+        $(".pl1").remove();
+        mathPosition2 = 100;
+        mathPositionId2 = "math100";
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        //  `<i id="nowPosition" i class="pl1 fas fa-chess-knight"></i>`;
+        // ゴールを表示
+        $("#toGoal").text(`プレイヤー1の勝利です!`);
+      }
+    }
+  }
+  // ③-１進むイベント実行
+  function fowordEvent1() {
+    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
+    // イベントコメント表示
+    $("#eventText").text(`イベント発生！${moveCount}マス進む！`);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      // マスの位置を取得 進む
+      mathPosition1 = mathPosition1 + moveCount;
       // コマの移動
       $(".pl1").remove();
       mathPositionId1 = "math" + mathPosition1;
@@ -50,86 +132,106 @@ $(function () {
           '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
         );
       // 画面を自動スクロール
-      document
-        .getElementById("nowPosition1")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを表示
+      let element = document.getElementById("nowPosition1");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示 減少
+      goalPosition1 = goalPosition1 - moveCount;
       $("#toGoal").text(`ゴールまであと${goalPosition1}マス`);
     } else {
-      //ゴール コマを変化させる、コメント表示
+      // プレイヤー位置変更あり
+      // マスの位置を取得 進む
+      mathPosition2 = mathPosition2 + moveCount;
+      // コマの移動
       $(".pl1").remove();
-      mathPosition1 = 100;
-      mathPositionId1 = "math100";
+      mathPositionId2 = "math" + mathPosition2;
       document
-        .getElementById(mathPositionId1)
+        .getElementById(mathPositionId2)
         .insertAdjacentHTML(
           "afterbegin",
           '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
         );
-      //  `<i id="nowPosition" i class="pl1 fas fa-chess-knight"></i>`;
-      // ゴールを表示
-      $("#toGoal").text(`プレイヤー1の勝利です!`);
+      // 画面を自動スクロール
+      let element = document.getElementById("nowPosition1");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示 減少
+      goalPosition2 = goalPosition2 - moveCount;
     }
-  }
-  // ③-１進むイベント実行
-  function fowordEvent1() {
-    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
-    // イベントコメント表示
-    $("#eventText").text(`イベント発生！${moveCount}マス進む！`);
-    // マスの位置を取得 進む
-    mathPosition1 = mathPosition1 + moveCount;
-    // コマの移動
-    $(".pl1").remove();
-    mathPositionId1 = "math" + mathPosition1;
-    document
-      .getElementById(mathPositionId1)
-      .insertAdjacentHTML(
-        "afterbegin",
-        '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
-      );
-    // 画面を自動スクロール
-    let element = document.getElementById("nowPosition1");
-    element.scrollIntoView({ behavior: "smooth", inline: "start" });
-    // ゴールまでの残りマスを取得、表示 減少
-    goalPosition1 = goalPosition1 - moveCount;
-    $("#toGoal").text(`ゴールまであと${goalPosition1}マス`);
   }
   // ③-2戻るイベント実行
   function backEvent1() {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
     // イベントコメント表示
     $("#eventText").text(`イベント発生！${moveCount}マス戻る！`);
-    // マスの位置を取得　戻る
-    mathPosition1 = mathPosition1 - moveCount;
-    // コマの移動
-    $(".pl1").remove();
-    mathPositionId1 = "math" + mathPosition1;
-    document
-      .getElementById(mathPositionId1)
-      .insertAdjacentHTML(
-        "afterbegin",
-        '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
-      );
-    // 画面を自動スクロール
-    let element = document.getElementById("nowPosition1");
-    element.scrollIntoView({ behavior: "smooth", inline: "start" });
-    // ゴールまでの残りマスを取得、表示　増加
-    goalPosition1 = goalPosition1 + moveCount;
-    $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      // マスの位置を取得　戻る
+      mathPosition1 = mathPosition1 - moveCount;
+      // コマの移動
+      $(".pl1").remove();
+      mathPositionId1 = "math" + mathPosition1;
+      document
+        .getElementById(mathPositionId1)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      let element = document.getElementById("nowPosition1");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示　増加
+      goalPosition1 = goalPosition1 + moveCount;
+      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    } else {
+      // プレイヤー位置変更あり
+      // マスの位置を取得　戻る
+      mathPosition2 = mathPosition2 - moveCount;
+      // コマの移動
+      $(".pl1").remove();
+      mathPositionId2 = "math" + mathPosition2;
+      document
+        .getElementById(mathPositionId2)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      let element = document.getElementById("nowPosition1");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示　増加
+      goalPosition2 = goalPosition2 + moveCount;
+    }
   }
   // ③イベントの選択
   function selectEvent1() {
-    if (
-      document.getElementById(mathPositionId1).classList.contains("event") ==
-      true
-    ) {
-      selectId = Math.floor(Math.random() * 2 + 1);
-      if (selectId == 1) {
-        // ③-１進むイベント実行
-        setTimeout(fowordEvent1, 1300);
-      } else {
-        // ③-２戻るイベント実行
-        setTimeout(backEvent1, 1300);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      if (
+        document.getElementById(mathPositionId1).classList.contains("event") ==
+        true
+      ) {
+        selectId = Math.floor(Math.random() * 2 + 1);
+        if (selectId == 1) {
+          // ③-１進むイベント実行
+          setTimeout(fowordEvent1, 1300);
+        } else {
+          // ③-２戻るイベント実行
+          setTimeout(backEvent1, 1300);
+        }
+      }
+    } else {
+      // プレイヤー位置変更あり
+      if (
+        document.getElementById(mathPositionId2).classList.contains("event") ==
+        true
+      ) {
+        selectId = Math.floor(Math.random() * 2 + 1);
+        if (selectId == 1) {
+          // ③-１進むイベント実行
+          setTimeout(fowordEvent1, 1300);
+        } else {
+          // ③-２戻るイベント実行
+          setTimeout(backEvent1, 1300);
+        }
       }
     }
   }
@@ -142,10 +244,111 @@ $(function () {
     // 次プレイヤーコメント
     $("#playNum").text(`プレイヤー${player}の順番です`);
     $("#count").text(`${diceRollCount2}投目`);
-    $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+    } else {
+      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    }
     document
       .getElementById("nowPosition2")
       .scrollIntoView({ behavior: "smooth", inline: "start" });
+  }
+  // ⑤プレイヤー位置変更
+  function chageEvent1() {
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      if (
+        document
+          .getElementById(mathPositionId1)
+          .classList.contains("changeEvent") == true
+      ) {
+        // プレイヤー変更タグ
+        changePlayer++;
+        alert(changePlayer);
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！位置が入れ替わる！`);
+        // マスの位置を取得
+        //  プレイヤー２をプレイヤー１の位置に移動
+        $(".pl2").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        // goalPosition1 = goalPosition1 - mathPosition1;
+        // $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+        // プレイヤー１をプレーヤー２の位置に移動
+        $(".pl1").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        // goalPosition2 = goalPosition2 - mathPosition2;
+        // $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+      }
+    } else {
+      // プレイヤー位置変更あり
+      if (
+        document
+          .getElementById(mathPositionId2)
+          .classList.contains("changeEvent") == true
+      ) {
+        // プレイヤー変更タグ
+        changePlayer--;
+        alert(changePlayer);
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！位置が入れ替わる！`);
+
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        // goalPosition2 = goalPosition2 - mathPosition2;
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        // goalPosition1 = goalPosition1 - mathPosition1;
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+      }
+    }
   }
 
   // プレイヤー２
@@ -161,11 +364,90 @@ $(function () {
   }
   // ②マスの位置を取得,コマの移動
   function position2() {
-    // マスの位置を取得
-    mathPosition2 = mathPosition2 + diceResult;
-    goalPosition2 = goalPosition2 - diceResult;
-    // alert(mathPosition);
-    if (mathPosition2 < 100) {
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      // マスの位置を取得
+      mathPosition2 = mathPosition2 + diceResult;
+      goalPosition2 = goalPosition2 - diceResult;
+      // alert(mathPosition);
+      if (mathPosition2 < 100) {
+        // コマの移動
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを表示
+        $("#toGoal").text(`ゴールまであと${goalPosition2}マス`);
+      } else {
+        //ゴール コマを変化させる、コメント表示
+        $(".pl2").remove();
+        mathPosition2 = 100;
+        mathPositionId2 = "math100";
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        //  `<i id="nowPosition" i class="fas fa-chess-knight"></i>`;
+        // ゴールを表示
+        $("#toGoal").text(`ゴール!!プレイヤー2の勝利です!!`);
+      }
+    } else {
+      // マスの位置を取得
+      mathPosition1 = mathPosition1 + diceResult;
+      goalPosition1 = goalPosition1 - diceResult;
+      // alert(mathPosition);
+      if (mathPosition1 < 100) {
+        // コマの移動
+        $(".pl2").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを表示
+        $("#toGoal").text(`ゴールまであと${goalPosition1}マス`);
+      } else {
+        //ゴール コマを変化させる、コメント表示
+        $(".pl2").remove();
+        mathPosition1 = 100;
+        mathPositionId1 = "math100";
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        //  `<i id="nowPosition" i class="fas fa-chess-knight"></i>`;
+        // ゴールを表示
+        $("#toGoal").text(`ゴール!!プレイヤー2の勝利です!!`);
+      }
+    }
+  }
+  // ③-１進むイベント実行
+  function fowordEvent2() {
+    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
+    // イベントコメント表示
+    $("#eventText").text(`イベント発生！${moveCount}マス進む！`);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      // マスの位置を取得 進む
+      mathPosition2 = mathPosition2 + moveCount;
       // コマの移動
       $(".pl2").remove();
       mathPositionId2 = "math" + mathPosition2;
@@ -176,86 +458,108 @@ $(function () {
           '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
         );
       // 画面を自動スクロール
-      document
-        .getElementById("nowPosition2")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを表示
+      let element = document.getElementById("nowPosition2");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示 減少
+      goalPosition2 = goalPosition2 - moveCount;
       $("#toGoal").text(`ゴールまであと${goalPosition2}マス`);
     } else {
-      //ゴール コマを変化させる、コメント表示
+      // プレイヤー位置変更あり
+      // マスの位置を取得 進む
+      mathPosition1 = mathPosition1 + moveCount;
+      // コマの移動
       $(".pl2").remove();
-      mathPosition2 = 100;
-      mathPositionId2 = "math100";
+      mathPositionId1 = "math" + mathPosition1;
       document
-        .getElementById(mathPositionId2)
+        .getElementById(mathPositionId1)
         .insertAdjacentHTML(
           "afterbegin",
           '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
         );
-      //  `<i id="nowPosition" i class="fas fa-chess-knight"></i>`;
-      // ゴールを表示
-      $("#toGoal").text(`ゴール!!プレイヤー2の勝利です!!`);
+      // 画面を自動スクロール
+      let element = document.getElementById("nowPosition2");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示 減少
+      goalPosition1 = goalPosition1 - moveCount;
+      $("#toGoal").text(`ゴールまであと${goalPosition1}マス`);
     }
-  }
-  // ③-１進むイベント実行
-  function fowordEvent2() {
-    moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
-    // イベントコメント表示
-    $("#eventText").text(`イベント発生！${moveCount}マス進む！`);
-    // マスの位置を取得 進む
-    mathPosition2 = mathPosition2 + moveCount;
-    // コマの移動
-    $(".pl2").remove();
-    mathPositionId2 = "math" + mathPosition2;
-    document
-      .getElementById(mathPositionId2)
-      .insertAdjacentHTML(
-        "afterbegin",
-        '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
-      );
-    // 画面を自動スクロール
-    let element = document.getElementById("nowPosition2");
-    element.scrollIntoView({ behavior: "smooth", inline: "start" });
-    // ゴールまでの残りマスを取得、表示 減少
-    goalPosition2 = goalPosition2 - moveCount;
-    $("#toGoal").text(`ゴールまであと${goalPosition2}マス`);
   }
   // ③-2戻るイベント実行
   function backEvent2() {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
     // イベントコメント表示
     $("#eventText").text(`イベント発生！${moveCount}マス戻る！`);
-    // マスの位置を取得　戻る
-    mathPosition2 = mathPosition2 - moveCount;
-    // コマの移動
-    $(".pl2").remove();
-    mathPositionId2 = "math" + mathPosition2;
-    document
-      .getElementById(mathPositionId2)
-      .insertAdjacentHTML(
-        "afterbegin",
-        '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
-      );
-    // 画面を自動スクロール
-    let element = document.getElementById("nowPosition2");
-    element.scrollIntoView({ behavior: "smooth", inline: "start" });
-    // ゴールまでの残りマスを取得、表示　増加
-    goalPosition2 = goalPosition2 + moveCount;
-    $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      // マスの位置を取得　戻る
+      mathPosition2 = mathPosition2 - moveCount;
+      // コマの移動
+      $(".pl2").remove();
+      mathPositionId2 = "math" + mathPosition2;
+      document
+        .getElementById(mathPositionId2)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      let element = document.getElementById("nowPosition2");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示　増加
+      goalPosition2 = goalPosition2 + moveCount;
+      $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+    } else {
+      // プレイヤー位置変更あり
+      // マスの位置を取得　戻る
+      mathPosition1 = mathPosition1 - moveCount;
+      // コマの移動
+      $(".pl2").remove();
+      mathPositionId1 = "math" + mathPosition1;
+      document
+        .getElementById(mathPositionId1)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      let element = document.getElementById("nowPosition2");
+      element.scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得、表示　増加
+      goalPosition1 = goalPosition1 + moveCount;
+      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    }
   }
   // ③イベントの選択
   function selectEvent2() {
-    if (
-      document.getElementById(mathPositionId2).classList.contains("event") ==
-      true
-    ) {
-      selectId = Math.floor(Math.random() * 2 + 1);
-      if (selectId == 1) {
-        // ③-１進むイベント実行
-        setTimeout(fowordEvent2, 1300);
-      } else {
-        // ③-２戻るイベント実行
-        setTimeout(backEvent2, 1300);
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      if (
+        document.getElementById(mathPositionId2).classList.contains("event") ==
+        true
+      ) {
+        selectId = Math.floor(Math.random() * 2 + 1);
+        if (selectId == 1) {
+          // ③-１進むイベント実行
+          setTimeout(fowordEvent2, 1300);
+        } else {
+          // ③-２戻るイベント実行
+          setTimeout(backEvent2, 1300);
+        }
+      }
+    } else {
+      // プレイヤー位置変更あり
+      if (
+        document.getElementById(mathPositionId1).classList.contains("event") ==
+        true
+      ) {
+        selectId = Math.floor(Math.random() * 2 + 1);
+        if (selectId == 1) {
+          // ③-１進むイベント実行
+          setTimeout(fowordEvent2, 1300);
+        } else {
+          // ③-２戻るイベント実行
+          setTimeout(backEvent2, 1300);
+        }
       }
     }
   }
@@ -270,10 +574,110 @@ $(function () {
     // 次プレイヤーコメント
     $("#playNum").text(`プレイヤー${player}の順番です`);
     $("#count").text(`${diceRollCount1}投目`);
-    $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    if (changePlayer == 1) {
+      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    } else {
+      $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+    }
     document
       .getElementById("nowPosition1")
       .scrollIntoView({ behavior: "smooth", inline: "start" });
+  }
+  // ⑤プレイヤー位置変更
+  function chageEvent2() {
+    // プレイヤー位置変更なし
+    if (changePlayer == 1) {
+      if (
+        document
+          .getElementById(mathPositionId2)
+          .classList.contains("changeEvent") == true
+      ) {
+        // プレイヤー変更タグ
+        changePlayer++;
+        alert(changePlayer);
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！位置が入れ替わる！`);
+
+        $(".pl1").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        goalPosition2 = goalPosition2 - mathPosition2;
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl2").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        goalPosition1 = goalPosition1 - mathPosition1;
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+      }
+    } else {
+      // プレイヤー位置変更あり
+      if (
+        document
+          .getElementById(mathPositionId1)
+          .classList.contains("changeEvent") == true
+      ) {
+        // プレイヤー変更タグ
+        changePlayer--;
+        alert(changePlayer);
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！位置が入れ替わる！`);
+
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        // goalPosition1 = goalPosition1 - mathPosition1;
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得、表示　増加
+        // goalPosition2 = goalPosition2 - mathPosition2;
+        // $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+      }
+    }
   }
 
   // サイコロを振る　まとめ
@@ -285,6 +689,7 @@ $(function () {
       selectEvent1(); //③イベントの選択
       if (playerId == 2) {
         playerChange1(); //④プレイヤー変更
+        chageEvent1(); // ⑤プレイヤー位置変更
       }
     } else {
       // プレイヤー２
@@ -292,6 +697,7 @@ $(function () {
       position2(); // ②マスの位置を取得、コマの移動
       selectEvent2(); //③イベントの選択
       playerChange2(); //④プレイヤー変更
+      chageEvent2(); // ⑤プレイヤー位置変更
     }
   });
 
