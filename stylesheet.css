@@ -86,6 +86,14 @@ p {
   color: rgb(59, 26, 209);
 }
 
+.pl3 {
+  color: rgb(5, 5, 5);
+}
+
+.pl4 {
+  color: rgb(209, 26, 148);
+}
+
 .math {
   /* 横スクロール用 */
   display: inline-block;
