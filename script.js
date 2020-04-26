@@ -265,7 +265,7 @@ $(function () {
       ) {
         // プレイヤー変更タグ
         changePlayer++;
-        alert(changePlayer);
+        // alert(changePlayer);
         // イベントコメント表示
         $("#eventText").text(`イベント発生！位置が入れ替わる！`);
         // マスの位置を取得
@@ -282,9 +282,6 @@ $(function () {
         document
           .getElementById("nowPosition2")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        // goalPosition1 = goalPosition1 - mathPosition1;
-        // $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
         // プレイヤー１をプレーヤー２の位置に移動
         $(".pl1").remove();
         mathPositionId2 = "math" + mathPosition2;
@@ -298,9 +295,6 @@ $(function () {
         document
           .getElementById("nowPosition1")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        // goalPosition2 = goalPosition2 - mathPosition2;
-        // $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
       }
     } else {
       // プレイヤー位置変更あり
@@ -311,7 +305,7 @@ $(function () {
       ) {
         // プレイヤー変更タグ
         changePlayer--;
-        alert(changePlayer);
+        // alert(changePlayer);
         // イベントコメント表示
         $("#eventText").text(`イベント発生！位置が入れ替わる！`);
 
@@ -327,8 +321,7 @@ $(function () {
         document
           .getElementById("nowPosition2")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        // goalPosition2 = goalPosition2 - mathPosition2;
+        // ゴールまでの残りマスを取得、表示
         $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
 
         // マスの位置を取得　戻る
@@ -344,8 +337,7 @@ $(function () {
         document
           .getElementById("nowPosition1")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        // goalPosition1 = goalPosition1 - mathPosition1;
+        // ゴールまでの残りマスを取得、表示
         $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
       }
     }
@@ -594,7 +586,7 @@ $(function () {
       ) {
         // プレイヤー変更タグ
         changePlayer++;
-        alert(changePlayer);
+        // alert(changePlayer);
         // イベントコメント表示
         $("#eventText").text(`イベント発生！位置が入れ替わる！`);
 
@@ -610,8 +602,7 @@ $(function () {
         document
           .getElementById("nowPosition1")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        goalPosition2 = goalPosition2 - mathPosition2;
+        // ゴールまでの残りマスを取得
         $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
 
         // マスの位置を取得　戻る
@@ -627,8 +618,7 @@ $(function () {
         document
           .getElementById("nowPosition2")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        goalPosition1 = goalPosition1 - mathPosition1;
+        // ゴールまでの残りマスを取得
         $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
       }
     } else {
@@ -640,7 +630,7 @@ $(function () {
       ) {
         // プレイヤー変更タグ
         changePlayer--;
-        alert(changePlayer);
+        // alert(changePlayer);
         // イベントコメント表示
         $("#eventText").text(`イベント発生！位置が入れ替わる！`);
 
@@ -657,7 +647,6 @@ $(function () {
           .getElementById("nowPosition1")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
         // ゴールまでの残りマスを取得、表示　増加
-        // goalPosition1 = goalPosition1 - mathPosition1;
         $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
 
         // マスの位置を取得　戻る
@@ -673,9 +662,6 @@ $(function () {
         document
           .getElementById("nowPosition2")
           .scrollIntoView({ behavior: "smooth", inline: "start" });
-        // ゴールまでの残りマスを取得、表示　増加
-        // goalPosition2 = goalPosition2 - mathPosition2;
-        // $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
       }
     }
   }
