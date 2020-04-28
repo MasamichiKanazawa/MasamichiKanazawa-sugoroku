@@ -29,8 +29,10 @@ $(function () {
   var moveCount;
   var minMove = 1;
   var maxMove = 4;
-  // プレイヤー位置変更タグ 1か2
-  var changePlayer = 1;
+  // コマの位置が変わるキー
+  var randomChange;
+  var minRandomChange = 1;
+  // var maxRandomChange; HTMLで指定
 
   // プレイヤー１
   //　1①サイコロの結果を取得
@@ -165,41 +167,119 @@ $(function () {
         .getElementById(mathPositionId1)
         .classList.contains("changeEvent") == true
     ) {
-      [mathPosition1, mathPosition2] = [mathPosition2, mathPosition1];
-      [goalPosition1, goalPosition2] = [goalPosition2, goalPosition1];
-      // イベントコメント表示
-      $("#eventText").text(`イベント発生！位置が入れ替わる！`);
+      randomChange =
+        Math.floor(Math.random() * (maxRandomChange + 1 - minRandomChange)) +
+        minRandomChange;
+      // alert(randomChange);
+      if (randomChange == 1) {
+        [mathPosition1, mathPosition2] = [mathPosition2, mathPosition1];
+        [goalPosition1, goalPosition2] = [goalPosition2, goalPosition1];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー２と位置が入れ替わる！`);
 
-      $(".pl1").remove();
-      mathPositionId1 = "math" + mathPosition1;
-      document
-        .getElementById(mathPositionId1)
-        .insertAdjacentHTML(
-          "afterbegin",
-          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
-        );
-      // 画面を自動スクロール
-      document
-        .getElementById("nowPosition1")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを取得
-      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
 
-      // マスの位置を取得　戻る
-      $(".pl2").remove();
-      mathPositionId2 = "math" + mathPosition2;
-      document
-        .getElementById(mathPositionId2)
-        .insertAdjacentHTML(
-          "afterbegin",
-          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
-        );
-      // 画面を自動スクロール
-      document
-        .getElementById("nowPosition2")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを取得
-      $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+        // マスの位置を取得　戻る
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+      } else if (randomChange == 2) {
+        [mathPosition1, mathPosition3] = [mathPosition3, mathPosition1];
+        [goalPosition1, goalPosition3] = [goalPosition3, goalPosition1];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー3と位置が入れ替わる！`);
+
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl3").remove();
+        mathPositionId3 = "math" + mathPosition3;
+        document
+          .getElementById(mathPositionId3)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition3")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+      } else {
+        [mathPosition1, mathPosition4] = [mathPosition4, mathPosition1];
+        [goalPosition1, goalPosition4] = [goalPosition4, goalPosition1];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー4と位置が入れ替わる！`);
+
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl4").remove();
+        mathPositionId4 = "math" + mathPosition4;
+        document
+          .getElementById(mathPositionId4)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition4")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+      }
     }
   }
 
@@ -349,41 +429,118 @@ $(function () {
         .getElementById(mathPositionId2)
         .classList.contains("changeEvent") == true
     ) {
-      [mathPosition2, mathPosition1] = [mathPosition1, mathPosition2];
-      [goalPosition2, goalPosition1] = [goalPosition1, goalPosition2];
-      // イベントコメント表示
-      $("#eventText").text(`イベント発生！位置が入れ替わる！`);
+      randomChange =
+        Math.floor(Math.random() * (maxRandomChange + 1 - minRandomChange)) +
+        minRandomChange;
+      if (randomChange == 1) {
+        [mathPosition2, mathPosition1] = [mathPosition1, mathPosition2];
+        [goalPosition2, goalPosition1] = [goalPosition1, goalPosition2];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー1と位置が入れ替わる！`);
 
-      $(".pl2").remove();
-      mathPositionId2 = "math" + mathPosition2;
-      document
-        .getElementById(mathPositionId2)
-        .insertAdjacentHTML(
-          "afterbegin",
-          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
-        );
-      // 画面を自動スクロール
-      document
-        .getElementById("nowPosition2")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを取得
-      $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
 
-      // マスの位置を取得　戻る
-      $(".pl1").remove();
-      mathPositionId1 = "math" + mathPosition1;
-      document
-        .getElementById(mathPositionId1)
-        .insertAdjacentHTML(
-          "afterbegin",
-          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
-        );
-      // 画面を自動スクロール
-      document
-        .getElementById("nowPosition1")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを取得
-      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+        // マスの位置を取得
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+      } else if (randomChange == 2) {
+        [mathPosition2, mathPosition3] = [mathPosition3, mathPosition2];
+        [goalPosition2, goalPosition3] = [goalPosition3, goalPosition2];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー3と位置が入れ替わる！`);
+
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl3").remove();
+        mathPositionId3 = "math" + mathPosition3;
+        document
+          .getElementById(mathPositionId3)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition3")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+      } else {
+        [mathPosition2, mathPosition4] = [mathPosition4, mathPosition2];
+        [goalPosition2, goalPosition4] = [goalPosition4, goalPosition2];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー4と位置が入れ替わる！`);
+
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl4").remove();
+        mathPositionId4 = "math" + mathPosition4;
+        document
+          .getElementById(mathPositionId4)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition4")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+      }
     }
   }
 
@@ -533,40 +690,117 @@ $(function () {
         .getElementById(mathPositionId3)
         .classList.contains("changeEvent") == true
     ) {
-      [mathPosition3, mathPosition4] = [mathPosition4, mathPosition3];
-      [goalPosition3, goalPosition4] = [goalPosition4, goalPosition3];
-      // イベントコメント表示
-      $("#eventText").text(`イベント発生！位置が入れ替わる！`);
-      $(".pl3").remove();
-      mathPositionId3 = "math" + mathPosition3;
-      document
-        .getElementById(mathPositionId3)
-        .insertAdjacentHTML(
-          "afterbegin",
-          '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
-        );
-      // 画面を自動スクロール
-      document
-        .getElementById("nowPosition3")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを取得
-      $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+      randomChange =
+        Math.floor(Math.random() * (maxRandomChange + 1 - minRandomChange)) +
+        minRandomChange;
+      if (randomChange == 1) {
+        [mathPosition3, mathPosition1] = [mathPosition1, mathPosition3];
+        [goalPosition3, goalPosition1] = [goalPosition1, goalPosition3];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー1と位置が入れ替わる！`);
 
-      // マスの位置を取得　戻る
-      $(".pl4").remove();
-      mathPositionId4 = "math" + mathPosition4;
-      document
-        .getElementById(mathPositionId4)
-        .insertAdjacentHTML(
-          "afterbegin",
-          '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
-        );
-      // 画面を自動スクロール
-      document
-        .getElementById("nowPosition4")
-        .scrollIntoView({ behavior: "smooth", inline: "start" });
-      // ゴールまでの残りマスを取得
-      $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+        $(".pl3").remove();
+        mathPositionId3 = "math" + mathPosition3;
+        document
+          .getElementById(mathPositionId3)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition3")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+
+        // マスの位置を取得
+        $(".pl1").remove();
+        mathPositionId1 = "math" + mathPosition1;
+        document
+          .getElementById(mathPositionId1)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition1")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+      } else if (randomChange == 2) {
+        [mathPosition3, mathPosition2] = [mathPosition2, mathPosition3];
+        [goalPosition3, goalPosition2] = [goalPosition2, goalPosition3];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー2と位置が入れ替わる！`);
+
+        $(".pl3").remove();
+        mathPositionId3 = "math" + mathPosition3;
+        document
+          .getElementById(mathPositionId3)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition3")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl2").remove();
+        mathPositionId2 = "math" + mathPosition2;
+        document
+          .getElementById(mathPositionId2)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition2")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+      } else {
+        [mathPosition3, mathPosition4] = [mathPosition4, mathPosition3];
+        [goalPosition3, goalPosition4] = [goalPosition4, goalPosition3];
+        // イベントコメント表示
+        $("#eventText").text(`イベント発生！プレイヤー4と位置が入れ替わる！`);
+        $(".pl3").remove();
+        mathPositionId3 = "math" + mathPosition3;
+        document
+          .getElementById(mathPositionId3)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition3")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+
+        // マスの位置を取得　戻る
+        $(".pl4").remove();
+        mathPositionId4 = "math" + mathPosition4;
+        document
+          .getElementById(mathPositionId4)
+          .insertAdjacentHTML(
+            "afterbegin",
+            '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
+          );
+        // 画面を自動スクロール
+        document
+          .getElementById("nowPosition4")
+          .scrollIntoView({ behavior: "smooth", inline: "start" });
+        // ゴールまでの残りマスを取得
+        $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+      }
     }
   }
 
@@ -619,6 +853,7 @@ $(function () {
       $("#toGoal").text(`ゴール!!プレイヤー4の勝利です!!`);
     }
   }
+
   // 4③-１進むイベント実行
   function fowordEvent4() {
     moveCount = Math.floor(Math.random() * (maxMove + 1 - minMove)) + minMove;
@@ -703,6 +938,124 @@ $(function () {
     }
   }
   // // 4⑤プレイヤー位置変更
+  if (
+    document
+      .getElementById(mathPositionId4)
+      .classList.contains("changeEvent") == true
+  ) {
+    randomChange =
+      Math.floor(Math.random() * (maxRandomChange + 1 - minRandomChange)) +
+      minRandomChange;
+    if (randomChange == 1) {
+      [mathPosition4, mathPosition1] = [mathPosition1, mathPosition4];
+      [goalPosition4, goalPosition1] = [goalPosition1, goalPosition4];
+      // イベントコメント表示
+      $("#eventText").text(`イベント発生！プレイヤー1と位置が入れ替わる！`);
+
+      $(".pl4").remove();
+      mathPositionId4 = "math" + mathPosition4;
+      document
+        .getElementById(mathPositionId4)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      document
+        .getElementById("nowPosition4")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得
+      $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+
+      // マスの位置を取得
+      $(".pl1").remove();
+      mathPositionId1 = "math" + mathPosition1;
+      document
+        .getElementById(mathPositionId1)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition1" i class="pl1 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      document
+        .getElementById("nowPosition1")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得
+      $(`#toGoal`).text(`ゴールまであと${goalPosition1}マス`);
+    } else if (randomChange == 2) {
+      [mathPosition4, mathPosition2] = [mathPosition2, mathPosition4];
+      [goalPosition4, goalPosition2] = [goalPosition2, goalPosition4];
+      // イベントコメント表示
+      $("#eventText").text(`イベント発生！プレイヤー2と位置が入れ替わる！`);
+
+      $(".pl4").remove();
+      mathPositionId4 = "math" + mathPosition4;
+      document
+        .getElementById(mathPositionId4)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      document
+        .getElementById("nowPosition4")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得
+      $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+
+      // マスの位置を取得　戻る
+      $(".pl2").remove();
+      mathPositionId2 = "math" + mathPosition2;
+      document
+        .getElementById(mathPositionId2)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition2" i class="pl2 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      document
+        .getElementById("nowPosition2")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得
+      $(`#toGoal`).text(`ゴールまであと${goalPosition2}マス`);
+    } else {
+      [mathPosition4, mathPosition3] = [mathPosition3, mathPosition4];
+      [goalPosition4, goalPosition3] = [goalPosition3, goalPosition4];
+      // イベントコメント表示
+      $("#eventText").text(`イベント発生！プレイヤー3と位置が入れ替わる！`);
+
+      // マスの位置を取得　戻る
+      $(".pl4").remove();
+      mathPositionId4 = "math" + mathPosition4;
+      document
+        .getElementById(mathPositionId4)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition4" i class="pl4 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      document
+        .getElementById("nowPosition4")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得
+      $(`#toGoal`).text(`ゴールまであと${goalPosition4}マス`);
+
+      $(".pl3").remove();
+      mathPositionId3 = "math" + mathPosition3;
+      document
+        .getElementById(mathPositionId3)
+        .insertAdjacentHTML(
+          "afterbegin",
+          '<i id="nowPosition3" i class="pl3 fas fa-horse"></i>'
+        );
+      // 画面を自動スクロール
+      document
+        .getElementById("nowPosition3")
+        .scrollIntoView({ behavior: "smooth", inline: "start" });
+      // ゴールまでの残りマスを取得
+      $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
+    }
+  }
 
   // サイコロを振る　まとめ
   $("#dicerollBtn").click(function () {
