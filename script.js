@@ -938,8 +938,7 @@ $(function () {
     }
   }
   // // 4⑤プレイヤー位置変更
-  changeEvent4();
-  {
+  function changeEvent4() {
     if (
       document
         .getElementById(mathPositionId4)
@@ -1058,42 +1057,41 @@ $(function () {
         $(`#toGoal`).text(`ゴールまであと${goalPosition3}マス`);
       }
     }
-
-    // サイコロを振る　まとめ
-    $("#dicerollBtn").click(function () {
-      if (player == 1) {
-        // プレイヤー１
-        diceAction1(); //①サイコロの結果を取得
-        position1(); // ②マスの位置を取得、コマの移動
-        selectEvent1(); //③イベントの選択
-        if (playerId >= 2) {
-          playerChange1(); //④プレイヤー変更
-          changeEvent1(); // ⑤プレイヤー位置変更
-        }
-      } else if (player == 2) {
-        // プレイヤー２
-        diceAction2(); //①サイコロの結果を取得
-        position2(); // ②マスの位置を取得、コマの移動
-        selectEvent2(); //③イベントの選択
-        playerChange2(); //④プレイヤー変更
-        changeEvent2(); // ⑤プレイヤー位置変更
-      } else if (player == 3) {
-        // プレイヤー3
-        diceAction3(); //①サイコロの結果を取得
-        position3(); // ②マスの位置を取得、コマの移動
-        selectEvent3(); //③イベントの選択
-        playerChange3(); //④プレイヤー変更
-        changeEvent3(); // ⑤プレイヤー位置変更
-      } else {
-        // プレイヤー4
-        diceAction4(); //①サイコロの結果を取得
-        position4(); // ②マスの位置を取得、コマの移動
-        selectEvent4(); //③イベントの選択
-        playerChange4(); //④プレイヤー変更
-        changeEvent4(); // ⑤プレイヤー位置変更
-      }
-    });
   }
+  // サイコロを振る　まとめ
+  $("#dicerollBtn").click(function () {
+    if (player == 1) {
+      // プレイヤー１
+      diceAction1(); //①サイコロの結果を取得
+      position1(); // ②マスの位置を取得、コマの移動
+      selectEvent1(); //③イベントの選択
+      if (playerId >= 2) {
+        playerChange1(); //④プレイヤー変更
+        changeEvent1(); // ⑤プレイヤー位置変更
+      }
+    } else if (player == 2) {
+      // プレイヤー２
+      diceAction2(); //①サイコロの結果を取得
+      position2(); // ②マスの位置を取得、コマの移動
+      selectEvent2(); //③イベントの選択
+      playerChange2(); //④プレイヤー変更
+      changeEvent2(); // ⑤プレイヤー位置変更
+    } else if (player == 3) {
+      // プレイヤー3
+      diceAction3(); //①サイコロの結果を取得
+      position3(); // ②マスの位置を取得、コマの移動
+      selectEvent3(); //③イベントの選択
+      playerChange3(); //④プレイヤー変更
+      changeEvent3(); // ⑤プレイヤー位置変更
+    } else {
+      // プレイヤー4
+      diceAction4(); //①サイコロの結果を取得
+      position4(); // ②マスの位置を取得、コマの移動
+      selectEvent4(); //③イベントの選択
+      playerChange4(); //④プレイヤー変更
+      changeEvent4(); // ⑤プレイヤー位置変更
+    }
+  });
 });
 
 //サイコロの動き
